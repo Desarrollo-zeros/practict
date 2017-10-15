@@ -6,6 +6,7 @@ class Practict extends CI_Controller {
     var $validar  = false;
     var $usuario = '';
     var $contrasena = '';
+    var $Email = '';
 
 
     public function __construct()
@@ -13,21 +14,28 @@ class Practict extends CI_Controller {
 
         parent::__construct(); //la funcion __construct() hereda el __construct de CI_Controller}
 
-        $this->load->model('');
-
         $this->validar = false;
         $this->usuario = '';
         $this->contrasena = '';
+        $this->Email = '';
     }
 
     public function index() //la funcion publica index es da vista a la pestaña inicial del navegador osea el index de la pagina web
 	{
+        $data['session'] = false;
 
-		$this->load->view('practict/index'); //llamo la vista y la muestro esta se encuentra en views/practict/index.php
+	    if(!empty($_SESSION['id'])){
+            $data['session'] = true;
+        }
+
+		$this->load->view('practict/index',$data); //llamo la vista y la muestro esta se encuentra en views/practict/index.php
 	}
 
-	public function iniciar_session(){
 
+
+
+
+	public function iniciarSesion(){
 
         $this->validar  = ($this->input->post("Iniciar_session") == 'login') ? true : false;
 
@@ -53,8 +61,49 @@ class Practict extends CI_Controller {
             else{
                 echo '0';
             }
+            $this->validar = false;
+        }
+    }
+
+    public function recuperar(){
+        $this->validar  = ($this->input->post("recuperar") == 'recuperar') ? true : false;
+
+        $this->Email = $this->input->post("email");
+
+        if($this->validar){
+            $this->validar = false;
+            if(!empty($this->Email)){
+                $this->validar = $this->U->RecuperarContraseña($this->Email);
+            }
+        }
+        if($this->validar){
+            echo '1'; //no
+        }
+        else{
+            echo '0';
         }
 
+        $this->validar = false;
+    }
+
+    public function controlCerrarSesionCorreo(){
+
+        $idUsuario = $this->input->post('idUsuario');
+        $correoElectronico = $this->input->post('correoElectronico');
+        $codigoCerrarSesion = $this->input->post('codigoCerrarSesion');
+
+        $this->load->view('practict/controlCerrarSesionCorreo');
+
+
+        if(empty($idUsuario) && empty($correoElectronico) && empty($codigoCerrarSesion)){
+            //header('Location: '.base_url("").' ');
+        }
+        else{
+            if($this->H->destroySessionOnline($idUsuario)){
+                $this->load->view('practict/controlCerrarSesionCorreo');
+            }
+
+        }
 
     }
 
