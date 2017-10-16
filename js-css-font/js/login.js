@@ -18,6 +18,9 @@ class Login{
                 if(data == 1) {
                     window.location.href = 'http://practict.simpleteamgroup.com/';
                 }
+				else{
+					swal("Warning","Usuario y/o Contraseña incorrecta","warning");
+				}
             }
         });
 
