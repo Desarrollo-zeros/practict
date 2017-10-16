@@ -333,7 +333,7 @@
                     <div class="col-lg-6">
                         <div class="copyright">
                             <p>
-                                <span>&copy; BioTex 2018 All right reserved. By </span><a href="http://webthemez.com/" target="_blank">WebThemez</a>
+                                <span>&copy; Practict 2017 Todos los derechos reservados. By </span><a href="https://simpleteamgroup.com/" target="_blank">SimpleTeamGroup/</a>
                             </p>
                         </div>
                     </div>
