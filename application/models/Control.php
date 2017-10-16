@@ -32,7 +32,7 @@ class Control extends  CI_Model
 
     function insertCerrarSesionesEmailACerrar($idUsuario,$correoElectronico,$codigoCerrarSesion){
         $r = false;
-        $query = $this->db->query('SELECT * FROM controlcerrarsesioncorreo  WHERE idUsuario = "'.$idUsuario.'"; ');
+        $query = $this->db->query('SELECT * FROM controlCerrarseSioncorreo  WHERE idUsuario = "'.$idUsuario.'"; ');
 
         if($query->num_rows() >0 ) {
             foreach ($query->result() as $row){
