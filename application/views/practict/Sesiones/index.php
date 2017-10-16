@@ -8,19 +8,19 @@
     <meta name="description" content="" />
     <meta name="author" content="https://simpleteamgroup.com/" />
 
-    <link rel="apple-touch-icon" sizes="180x180" href="js-css-font/fav/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="js-css-font/fav/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="js-css-font/fav/favicon-16x16.png">
-    <link rel="manifest" href="js-css-font/fav/manifest.json">
-    <link rel="mask-icon" href="js-css-font/fav/safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../../js-css-font/fav/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../../../../js-css-font/fav/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../../../../js-css-font/fav/favicon-16x16.png">
+    <link rel="manifest" href="../../../../js-css-font/fav/manifest.json">
+    <link rel="mask-icon" href="../../../../js-css-font/fav/safari-pinned-tab.svg" color="#5bbad5">
     <meta name="theme-color" content="#ffffff">
 
     <!-- css -->
-    <link href="js-css-font/css/bootstrap.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="js-css-font/simple-line-icons/css/simple-line-icons.css">
-    <link href="js-css-font/css/fancybox/jquery.fancybox.css" rel="stylesheet">
-    <link href="js-css-font/css/flexslider.css" rel="stylesheet" />
-    <link href="js-css-font/css/style.css" rel="stylesheet" />
+    <link href="../../../../js-css-font/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../../../../js-css-font/simple-line-icons/css/simple-line-icons.css">
+    <link href="../../../../js-css-font/css/fancybox/jquery.fancybox.css" rel="stylesheet">
+    <link href="../../../../js-css-font/css/flexslider.css" rel="stylesheet" />
+    <link href="../../../../js-css-font/css/style.css" rel="stylesheet" />
 
 
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->

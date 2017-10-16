@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="es">
 
 <head>
@@ -29,7 +30,12 @@
     <![endif]-->
 
 </head>
-<body onload="return session(<?=$session;?>)">
+
+
+
+
+<body>
+
 <div id="wrapper" class="home-page">
     <!-- start header -->
     <header>
@@ -46,13 +52,16 @@
                 <div class="navbar-collapse collapse ">
                     <ul class="nav navbar-nav">
                         <li class="active"><a href="<?=base_url('');?>">Inicio</a></li>
-                        <li id="i" class=""><a href="#" onclick="return Blogin();">Iniciar Sesión</a></li>
-                        <li id="c" style="display: none;"><a href="#" onclick="return Bcerrar();">Cerrar Sesión</a></li>
-                        <!-- <li><a href="about.html">About Us</a></li>
-                         <li><a href="services.html">Services</a></li>
-                         <li><a href="portfolio.html">Portfolio</a></li>
-                         <li><a href="pricing.html">Pricing</a></li>
-                         <li><a href="contact.html">Contact</a></li> -->
+
+                        <?php
+                        if(!empty($_SESSION['idUsuario'])){
+                            echo '<li><a href="#" onclick="return Bcerrar();">Cerrar Sesión</a></li>';
+                        }
+                        else{
+                            echo '<li><a href="#" onclick="return Blogin();">Iniciar Sesión</a></li>';
+                        }
+                        ?>
+
                     </ul>
                 </div>
             </div>
@@ -77,22 +86,14 @@
 
                             <ul class="nav navbar-nav">
                                 <li class="active"><a href="<?=base_url('');?>">Inicio</a></li>
-                                <li class=""><a href="#" onclick="return Blogin();">Iniciar Sesión</a></li>
-                                <li style="display: none;"><a href="#" onclick="return Bcerrar();">Cerrar Sesión</a></li>
-
-                                <!-- <li class="active"><a href="index-2.html">Home</a></li>
-                                <li><a href="about.html">About Us</a></li>
-                                <li class=" dropdown"><a href="#" class="dropdown-toggle active" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Services <span class="caret"></span></a>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="services.html">IT Services</a></li>
-                                        <li><a href="#">Consultancy</a></li>
-                                        <li><a href="#">Mobile Dev</a></li>
-                                    </ul>
-                                </li>
-
-                                <li><a href="portfolio.html">Portfolio</a></li>
-                                <li><a href="pricing.html">Pricing</a></li>
-                                <li><a href="contact.html">Contact</a></li> -->
+                                <?php
+                                if(!empty($_SESSION['idUsuario'])){
+                                    echo '<li><a href="#" onclick="return Bcerrar();">Cerrar Sesión</a></li>';
+                                }
+                                else{
+                                    echo '<li><a href="#" onclick="return Blogin();">Iniciar Sesión</a></li>';
+                                }
+                                ?>
                             </ul>
 
 
@@ -405,23 +406,10 @@
     }
 
     function Bcerrar() {
-        window.location.href = "<?=base_url('cerrar')?>";
+        window.location.href = "<?=base_url('ControlSesiones/cerrarSesion')?>";
     }
 
 
-
-
-
-    function  session(id) {
-        if(id){
-            document.getElementById("i").style.display = "none";
-            document.getElementById("c").style.display = "block";
-        }
-        else{
-            document.getElementById("c").style.display = "none";
-            document.getElementById("i").style.display = "block";
-        }
-    }
 
 </script>
 </body>

@@ -16,7 +16,7 @@ class Login{
             },
             success: function (data) {
                 if(data == 1) {
-                    console.log("login entre ...")
+                    window.location.href = 'http://practict.simpleteamgroup.com/';
                 }
             }
         });
@@ -38,7 +38,7 @@ class Login{
                     setTimeout(function() {
 
                         $.ajax({
-                            url: "practict/recuperar",
+                            url: "ControlSesiones/recuperarEmailC",
                             type: 'POST',
                             data: {
                                 email: email,
@@ -66,6 +66,20 @@ class Login{
 
     }
 
+
+    cerrarTodasSesionesEnLinea(){
+        $.ajax({
+            url: "ControlSesiones/cerrarTodasSesionesEnLinea",
+            type: 'POST',
+            success: function (data) {
+                if(data == 1){
+                    window.location.href = 'ControlSesiones/cerrarSesion';
+                }
+            },
+        });
+
+    }
+
 }
 
 
@@ -82,9 +96,11 @@ $(document).ready(function () {
        login.login_ajax(usuario,contraseña);
     });
 
+    setInterval(login.cerrarTodasSesionesEnLinea, 3000);
+
 })
 
 
-function olvideC () {
+function olvideC() {
     login.recuperar_ajax();
 }

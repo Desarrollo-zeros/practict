@@ -22,18 +22,8 @@ class Practict extends CI_Controller {
 
     public function index() //la funcion publica index es da vista a la pestaña inicial del navegador osea el index de la pagina web
 	{
-        $data['session'] = false;
-
-	    if(!empty($_SESSION['id'])){
-            $data['session'] = true;
-        }
-
-		$this->load->view('practict/index',$data); //llamo la vista y la muestro esta se encuentra en views/practict/index.php
+        $this->load->view('practict/index'); //llamo la vista y la muestro esta se encuentra en views/practict/index.php
 	}
-
-
-
-
 
 	public function iniciarSesion(){
 
@@ -86,25 +76,5 @@ class Practict extends CI_Controller {
         $this->validar = false;
     }
 
-    public function controlCerrarSesionCorreo(){
-
-        $idUsuario = $this->input->post('idUsuario');
-        $correoElectronico = $this->input->post('correoElectronico');
-        $codigoCerrarSesion = $this->input->post('codigoCerrarSesion');
-
-        $this->load->view('practict/controlCerrarSesionCorreo');
-
-
-        if(empty($idUsuario) && empty($correoElectronico) && empty($codigoCerrarSesion)){
-            //header('Location: '.base_url("").' ');
-        }
-        else{
-            if($this->H->destroySessionOnline($idUsuario)){
-                $this->load->view('practict/controlCerrarSesionCorreo');
-            }
-
-        }
-
-    }
 
 }
