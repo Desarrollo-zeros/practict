@@ -73,7 +73,7 @@ class Usuario extends  CI_Model{
     }
 
 	function VerificarCorreoExiste($email){ 
-		$query = $this->db->query('SELECT idUsuario FROM usuario WHERE correoElectronico = "'$email'"; ');
+		$query = $this->db->query('SELECT idUsuario FROM usuario WHERE correoElectronico = "'.$email.'"; ');
 		 if($query->num_rows() == 1) {
 			 return true; //validar si correo a recuperar existe
 		 }
