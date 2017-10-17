@@ -43,8 +43,13 @@ class ControlSesiones extends CI_Controller {
         if($this->input->post('recuperar') == 'recuperar') {
             $email = $this->input->post('email');
             $nuevaClave1 = $this->H->generarCodigo();
+			if($this->U->VerificarCorreoExiste($email)){
             $nuevaClave2 = $this->H->encryptEmailContraseña($email,$nuevaClave1);
             echo $this->C->recuperarContraseña($email,$nuevaClave1,$nuevaClave2);
+			}
+			else{
+				echo 0;
+			}
         }
         else{
             redirect('');
