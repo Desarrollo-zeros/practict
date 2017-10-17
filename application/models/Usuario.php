@@ -72,6 +72,13 @@ class Usuario extends  CI_Model{
         }
     }
 
+	function VerificarCorreoExiste($email){ 
+		$query = $this->db->query('SELECT idUsuario FROM usuario WHERE correoElectronico = "'$email'"; ');
+		 if($query->num_rows() == 1) {
+			 return true; //validar si correo a recuperar existe
+		 }
+	}
+	
     function validarRecuperacionYCambiarContraseña($correoElectronico,$claveDeacceso,$nuevaContraseña){
         $query = $this->db->query('SELECT idUsuario FROM usuario WHERE correoElectronico = "'.$correoElectronico.'" AND claveDeacceso = "'.$claveDeacceso.'" AND cambioClaveDeAcceso = "'.$nuevaContraseña.'";');
         if($query->num_rows() == 1) {
