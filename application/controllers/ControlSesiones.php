@@ -23,6 +23,9 @@ class ControlSesiones extends CI_Controller {
             if($this->C->insertCerrarSesionesEmailACerrar($idUsuario,$correoElectronico,$codigoCerrarSesion)){
                 $this->load->view('practict/Sesiones/index');
             }
+	    else{
+	    	redirect('');
+	    }
 
         }else{
             redirect('');
