@@ -66,7 +66,7 @@ class Herramientas extends  CI_Model{
         $configGmail = array(
             'protocol' => 'smtp',
             'smtp_host' => 'ssl://smtp.googlemail.com',
-            'smtp_port' => 465,
+            'smtp_port' => 587,
             'smtp_user' => "wowzeros2@gmail.com",
             'smtp_pass' => "1997102007wae",
             'mailtype' => 'html',
