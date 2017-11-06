@@ -65,7 +65,7 @@ class Herramientas extends  CI_Model{
     {
         $configGmail = array(
             'protocol' => 'smtp',
-            'smtp_host' => 'ssl://smtp.googlemail.com',
+            'smtp_host' => 'smtp.gmail.com',
             'smtp_port' => 587,
             'smtp_user' => "wowzeros2@gmail.com",
             'smtp_pass' => "1997102007wae",
@@ -304,7 +304,7 @@ class Herramientas extends  CI_Model{
 
     function enviarNuevaContraseña($nombres,$apellidos,$correoElectronico,$claveDeAcceso,$cambioClaveDeAcceso){
         $this->email->initialize($this->smtpEmailC());
-        $this->email->from('candrescastilla@simpleteamgroup.com');
+        $this->email->from('wowzeros2@gmail.com');
         $this->email->to($correoElectronico);
         $this->email->subject('Cambio de contraseña');
         $this->email->message('
