@@ -96,8 +96,8 @@
                 <ul class="nav">
                     <li><a href="" class="active"><i class="lnr lnr-home"></i> <span>Panel</span></a></li>
                     <li><a href="#registrarDocente" onclick="return registrarDocente();" class=""><i class="lnr lnr-user"></i> <span>registrar docente </span></a></li>
-                    <li><a href="javascript:void" onclick="return registrarModulo();" class=""><i class="lnr lnr-book"></i> <span>Registrar Modulo</span></a></li>
-                    <li><a href="javascript:void" onclick="return Estadisticas();" class=""><i class="lnr lnr-chart-bars"></i> <span>estadisticas</span></a></li>
+                    <li><a href="#gestionModulo" onclick="return registrarModulos();" class=""><i class="lnr lnr-book"></i> <span>Registrar Modulo</span></a></li>
+                    <li><a href="" onclick="return Estadisticas();" class=""><i class="lnr lnr-chart-bars"></i> <span>estadisticas</span></a></li>
                 </ul>
             </nav>
         </div>
@@ -117,9 +117,7 @@
                     </div>
                 </div>
 
-
-
-                <div class="row" id="registrarDocente" style="display: none;">
+                <div class="row" id="gestionDocente" style="display: none;">
                     <div class="col-md-12">
                         <div class="panel text-center center-block">
                             <div class="panel-heading">
@@ -175,7 +173,6 @@
                                         </div>
                                     </form>
 
-
                                     <form  role="form" action="javascript:;" id="editarDocente_Ajax" method="post"  class="center-block" autocomplete="off" style="display: none;">
                                         <div class="col-md-12">
                                             <div class="col-md-6">
@@ -221,12 +218,7 @@
                                             </div>
                                         </div>
                                     </form>
-
                                 </div>
-
-
-
-
                                 <div class="row center-block  text-center">
                                     <div class="col-md-12">
                                         <table class="table table-hover">
@@ -248,14 +240,91 @@
 
                             </div>
 
-
-
-
-
-
                         </div>
                     </div>
                 </div>
+
+
+                <div class="row" id="gestionModulo" style="display: none;">
+                    <div class="col-md-12">
+                        <div class="panel text-center center-block">
+                            <div class="panel-heading">
+                                <h3 class="panel-title" id="tituloRegistrarModulo" style="display: block;"><b>Registrar Modulo</b></h3>
+                                <h3 class="panel-title" id="tituloEditarModulo" style="display: none;"><b>Editar Modulo</b></h3>
+                            </div>
+                            <div class="panel-body no-padding">
+                                <div class="row center-block  text-center">
+
+                                    <form id="registrarModulo_Ajax" style="display: block;" class="registrarModulo_Ajax" action="" method="post">
+                                        <div class="col-md-12">
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label for="">Modulo:</label>
+                                                    <input type="text" name="nombreModulo" id="nombreModulo" value="" class="form-control" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label for="">Creditos:</label>
+                                                    <input type="number" name="numeroDeCredito" id="numeroDeCredito" value="" class="form-control" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <br><input type="submit" name="" value="Guardar modulo" class="btn btn-success">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+
+
+
+                                    <form id="editarModulo_Ajax" class=editarModulo_Ajax"" action="" style="display: none;" method="post">
+                                        <div class="col-md-12">
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label for="">Modulo:</label>
+                                                    <input type="text" name="nombreModulo1" id="nombreModulo1" value="" class="form-control" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label for="">Creditos:</label>
+                                                    <input type="number" name="numeroDeCredito1" id="numeroDeCredito1" value="" class="form-control" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <br><input type="submit" name="" value="Editar Modulo" class="btn btn-info">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+
+                                    <div class="row center-block  text-center">
+                                        <div class="col-md-12">
+                                            <table class="table table-hover">
+                                                <thead>
+                                                <tr>
+                                                    <th >Id</th>
+                                                    <th style="position: relative; left: 45px;">Nombre del Modulo</th>
+                                                    <th style="position: relative; right: 50px;">Credito</th>
+                                                    <th style="position: relative; left: 30px;">Accion</th>
+                                                </tr>
+                                                </thead>
+
+                                                <tbody id="tablaModulo">
+
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+
+                                </div>
+                         </div>
+                    </div>
+                </div>
+
 
             </div>
         </div>
@@ -292,12 +361,17 @@
 
 
    function registrarDocente(){
-        //actualizar tabla docente
-        //ocultar paginas
-        $("#registrarDocente").css("display","block");
-        ModeloPanel.ActualizarTablaDocente();
+       $("#gestionModulo").css("display","none");
+       $("#gestionDocente").css("display","block");
+       ModeloPanel.ActualizarTablaDocente();
    }
 
+
+   function registrarModulos(){
+       $("#gestionDocente").css("display","none");
+       $("#gestionModulo").css("display","block");
+       ModeloModulo.ActualizarTablaModulo();
+    }
 
 
 

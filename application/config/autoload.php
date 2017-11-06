@@ -133,4 +133,4 @@ $autoload['language'] = array();
 |	$autoload['model'] = array('first_model' => 'first');
 */
 //$autoload['model'] = array();
-$autoload['model'] = array('Usuario' => 'U','Herramientas' =>  'H',  "Control" => "C");
+$autoload['model'] = array('Usuario' => 'U','Herramientas' =>  'H',  "Control" => "C", "Docente" => "D", "Modulo" => "M");

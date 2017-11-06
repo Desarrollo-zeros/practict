@@ -8,6 +8,21 @@ class Usuario extends  CI_Model{
         parent::__construct();
     }
 
+
+    function getRol(){
+        $id = $_SESSION['idUsuario'];
+        $query = $this->db->query('select rol from usuarioAcceso where idUsuario = '.$id.'; ');
+
+        if($query->num_rows() > 0){
+            $row = $query->row();
+            return $row->rol;
+        }
+        else{
+            return 0;
+        }
+
+    }
+
     function login($usuario,$contraseña)
     {
         $query = $this->db->query('SELECT *FROM usuario WHERE correoElectronico = "'.$usuario.'" AND claveDeAcceso = "'.$contraseña.'" LIMIT 1;');
@@ -15,21 +30,13 @@ class Usuario extends  CI_Model{
         if($query->num_rows() == 1){
 
             $row = $query->row();
-
             $newdata = array(
                 "idUsuario" => $row->idUsuario,
-                "nombres" => $row->nombres,
-                "apellidos" => $row->apellidos,
-                "telefono" => $row->telefono,
-                "rol" => $row->rol,
                 "correoElectronico" => $row->correoElectronico,
                 "claveDeAcceso" => $row->claveDeAcceso,
-                "estado" => $row->estado,
-                'logged_in' => TRUE
+                "estado" => $row->estado
             );
-
-
-            $this->comprobarInicioSesion($row->idUsuario,$row->nombres, $row->apellidos,$row->correoElectronico);
+            $this->comprobarInicioSesion($row->idUsuario,$row->Pnombre." ".$row->Snombre, $row->Papellido." ".$row->Sapellido,$row->correoElectronico);
             $this->session->set_userdata($newdata);
             $this->db->query('INSERT INTO sesiones(idUsuario,idSession) VALUES("'.$row->idUsuario.'","'.session_id().'");');
             return true;
@@ -40,7 +47,6 @@ class Usuario extends  CI_Model{
 
     }
 
-
     function RecuperarContraseña($email,$nuevaClave)
     {
        $this->db->query('UPDATE usuario SET cambioClaveDeAcceso = "'.$nuevaClave.'" WHERE correoElectronico =  "'.$email.'"; ');
@@ -50,14 +56,12 @@ class Usuario extends  CI_Model{
        }
     }
 
-
     function guardarNuevoIngreso($idUsuario){
         $this->db->query('INSERT INTO controlSesiones(idUsuario,ip) VALUES("'.$idUsuario.'", "'.$this->H->getRealIP().'");');
     }
 
     function comprobarInicioSesion($idUsuario,$nombres,$apellidos,$correoElectronico){
         $query = $this->db->query('SELECT fechaOnline,ip FROM controlSesiones WHERE idUsuario = "'.$idUsuario.'";');
-
         if($query->num_rows() == 1) {
 
             $row = $query->row();

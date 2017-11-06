@@ -1,42 +1,27 @@
-/*
-Navicat MySQL Data Transfer
+-- MySQL dump 10.16  Distrib 10.1.26-MariaDB, for Win32 (AMD64)
+--
+-- Host: localhost    Database: practict
+-- ------------------------------------------------------
+-- Server version	10.1.26-MariaDB
 
-Source Server         : localhost
-Source Server Version : 100126
-Source Host           : localhost:3306
-Source Database       : practict
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
-Target Server Type    : MYSQL
-Target Server Version : 100126
-File Encoding         : 65001
+--
+-- Table structure for table `ci_sessions`
+--
 
-Date: 2017-10-16 16:01:12
-*/
-
-SET FOREIGN_KEY_CHECKS=0;
-
--- ----------------------------
--- Table structure for asignatura
--- ----------------------------
-DROP TABLE IF EXISTS `asignatura`;
-CREATE TABLE `asignatura` (
-  `idAsignatura` varchar(10) NOT NULL,
-  `nombre` varchar(45) NOT NULL,
-  `estado` varchar(1) NOT NULL,
-  `Periodo_idPeriodo` varchar(10) NOT NULL,
-  PRIMARY KEY (`idAsignatura`),
-  KEY `fk_Asignatura_Periodo1_idx` (`Periodo_idPeriodo`),
-  CONSTRAINT `fk_Asignatura_Periodo1` FOREIGN KEY (`Periodo_idPeriodo`) REFERENCES `periodo` (`idPeriodo`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- ----------------------------
--- Records of asignatura
--- ----------------------------
-
--- ----------------------------
--- Table structure for ci_sessions
--- ----------------------------
 DROP TABLE IF EXISTS `ci_sessions`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `ci_sessions` (
   `id` varchar(128) NOT NULL,
   `ip_address` varchar(45) NOT NULL,
@@ -45,16 +30,24 @@ CREATE TABLE `ci_sessions` (
   PRIMARY KEY (`id`,`ip_address`),
   KEY `ci_sessions_timestamp` (`timestamp`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- ----------------------------
--- Records of ci_sessions
--- ----------------------------
-INSERT INTO `ci_sessions` VALUES ('tgvmbcjean8u2iucji7uc0mnhuou69ud', '::1', '1508187601', '');
+--
+-- Dumping data for table `ci_sessions`
+--
 
--- ----------------------------
--- Table structure for controlcerrarsesioncorreo
--- ----------------------------
+LOCK TABLES `ci_sessions` WRITE;
+/*!40000 ALTER TABLE `ci_sessions` DISABLE KEYS */;
+/*!40000 ALTER TABLE `ci_sessions` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `controlcerrarsesioncorreo`
+--
+
 DROP TABLE IF EXISTS `controlcerrarsesioncorreo`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `controlcerrarsesioncorreo` (
   `idUsuario` int(10) DEFAULT NULL,
   `correoElectronico` varchar(50) DEFAULT NULL,
@@ -62,162 +55,72 @@ CREATE TABLE `controlcerrarsesioncorreo` (
   `fechaUso` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `activo` int(1) DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- ----------------------------
--- Records of controlcerrarsesioncorreo
--- ----------------------------
+--
+-- Dumping data for table `controlcerrarsesioncorreo`
+--
 
--- ----------------------------
--- Table structure for controlsesiones
--- ----------------------------
+LOCK TABLES `controlcerrarsesioncorreo` WRITE;
+/*!40000 ALTER TABLE `controlcerrarsesioncorreo` DISABLE KEYS */;
+/*!40000 ALTER TABLE `controlcerrarsesioncorreo` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `controlsesiones`
+--
+
 DROP TABLE IF EXISTS `controlsesiones`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `controlsesiones` (
   `idUsuario` int(10) NOT NULL AUTO_INCREMENT,
   `fechaOnline` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `ip` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`idUsuario`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
-
--- ----------------------------
--- Records of controlsesiones
--- ----------------------------
-
--- ----------------------------
--- Table structure for docente
--- ----------------------------
-DROP TABLE IF EXISTS `docente`;
-CREATE TABLE `docente` (
-  `Usuario_idUsuario` varchar(10) NOT NULL,
-  `Institución_idInstitución` varchar(10) NOT NULL,
-  PRIMARY KEY (`Usuario_idUsuario`,`Institución_idInstitución`),
-  KEY `fk_Usuario_has_Institución_Institución1_idx` (`Institución_idInstitución`),
-  KEY `fk_Usuario_has_Institución_Usuario1_idx` (`Usuario_idUsuario`),
-  CONSTRAINT `fk_Usuario_has_Institución_Institución1` FOREIGN KEY (`Institución_idInstitución`) REFERENCES `institución` (`idInstitución`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_Usuario_has_Institución_Usuario1` FOREIGN KEY (`Usuario_idUsuario`) REFERENCES `usuario` (`idUsuario`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- ----------------------------
--- Records of docente
--- ----------------------------
+--
+-- Dumping data for table `controlsesiones`
+--
 
--- ----------------------------
--- Table structure for grupo
--- ----------------------------
-DROP TABLE IF EXISTS `grupo`;
-CREATE TABLE `grupo` (
-  `Asignatura_idAsignatura` varchar(10) NOT NULL,
-  `Docente_Usuario_idUsuario` varchar(10) NOT NULL,
-  `Docente_Institución_idInstitución` varchar(10) NOT NULL,
-  PRIMARY KEY (`Asignatura_idAsignatura`,`Docente_Usuario_idUsuario`,`Docente_Institución_idInstitución`),
-  KEY `fk_Asignatura_has_Docente_Docente1_idx` (`Docente_Usuario_idUsuario`,`Docente_Institución_idInstitución`),
-  KEY `fk_Asignatura_has_Docente_Asignatura1_idx` (`Asignatura_idAsignatura`),
-  CONSTRAINT `fk_Asignatura_has_Docente_Asignatura1` FOREIGN KEY (`Asignatura_idAsignatura`) REFERENCES `asignatura` (`idAsignatura`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_Asignatura_has_Docente_Docente1` FOREIGN KEY (`Docente_Usuario_idUsuario`, `Docente_Institución_idInstitución`) REFERENCES `docente` (`Usuario_idUsuario`, `Institución_idInstitución`) ON DELETE NO ACTION ON UPDATE NO ACTION
+LOCK TABLES `controlsesiones` WRITE;
+/*!40000 ALTER TABLE `controlsesiones` DISABLE KEYS */;
+/*!40000 ALTER TABLE `controlsesiones` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `modulo`
+--
+
+DROP TABLE IF EXISTS `modulo`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `modulo` (
+  `idModulo` int(11) NOT NULL AUTO_INCREMENT,
+  `nombreModulo` varchar(50) DEFAULT NULL,
+  `numeroDeCredito` int(11) DEFAULT NULL,
+  PRIMARY KEY (`idModulo`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- ----------------------------
--- Records of grupo
--- ----------------------------
+--
+-- Dumping data for table `modulo`
+--
 
--- ----------------------------
--- Table structure for institución
--- ----------------------------
-DROP TABLE IF EXISTS `institución`;
-CREATE TABLE `institución` (
-  `idInstitución` varchar(10) NOT NULL,
-  `nombre` varchar(45) NOT NULL,
-  `dirección` varchar(45) NOT NULL,
-  `teléfono` varchar(45) NOT NULL,
-  `códigoDeContrato` varchar(45) DEFAULT NULL,
-  `estado` varchar(1) NOT NULL,
-  PRIMARY KEY (`idInstitución`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+LOCK TABLES `modulo` WRITE;
+/*!40000 ALTER TABLE `modulo` DISABLE KEYS */;
+/*!40000 ALTER TABLE `modulo` ENABLE KEYS */;
+UNLOCK TABLES;
 
--- ----------------------------
--- Records of institución
--- ----------------------------
+--
+-- Table structure for table `sesiones`
+--
 
--- ----------------------------
--- Table structure for paciente
--- ----------------------------
-DROP TABLE IF EXISTS `paciente`;
-CREATE TABLE `paciente` (
-  `idPaciente` int(11) NOT NULL,
-  `nombres` varchar(45) NOT NULL,
-  `apellidos` varchar(45) NOT NULL,
-  `telefono` varchar(10) NOT NULL,
-  `dirección` varchar(45) NOT NULL,
-  `Institución_idInstitución` varchar(10) NOT NULL,
-  PRIMARY KEY (`idPaciente`),
-  KEY `fk_Paciente_Institución1_idx` (`Institución_idInstitución`),
-  CONSTRAINT `fk_Paciente_Institución1` FOREIGN KEY (`Institución_idInstitución`) REFERENCES `institución` (`idInstitución`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- ----------------------------
--- Records of paciente
--- ----------------------------
-
--- ----------------------------
--- Table structure for periodo
--- ----------------------------
-DROP TABLE IF EXISTS `periodo`;
-CREATE TABLE `periodo` (
-  `idPeriodo` varchar(10) NOT NULL,
-  `fechaDeInicio` datetime NOT NULL,
-  `fechaDeFinalización` datetime NOT NULL,
-  PRIMARY KEY (`idPeriodo`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- ----------------------------
--- Records of periodo
--- ----------------------------
-
--- ----------------------------
--- Table structure for procedimiento
--- ----------------------------
-DROP TABLE IF EXISTS `procedimiento`;
-CREATE TABLE `procedimiento` (
-  `idProcedimiento` varchar(10) NOT NULL,
-  `nombre` varchar(45) NOT NULL,
-  `estado` varchar(1) NOT NULL,
-  `Asignatura_idAsignatura` varchar(10) NOT NULL,
-  PRIMARY KEY (`idProcedimiento`),
-  KEY `fk_Procedimiento_Asignatura1_idx` (`Asignatura_idAsignatura`),
-  CONSTRAINT `fk_Procedimiento_Asignatura1` FOREIGN KEY (`Asignatura_idAsignatura`) REFERENCES `asignatura` (`idAsignatura`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- ----------------------------
--- Records of procedimiento
--- ----------------------------
-
--- ----------------------------
--- Table structure for reporte
--- ----------------------------
-DROP TABLE IF EXISTS `reporte`;
-CREATE TABLE `reporte` (
-  `idReporte` varchar(10) NOT NULL,
-  `observaciones` varchar(200) NOT NULL,
-  `Usuario_idUsuario` varchar(10) NOT NULL,
-  `Periodo_idPeriodo` varchar(10) NOT NULL,
-  `Asignatura_idAsignatura` varchar(10) NOT NULL,
-  `fecha` datetime NOT NULL,
-  PRIMARY KEY (`idReporte`),
-  KEY `fk_Reporte_Usuario1_idx` (`Usuario_idUsuario`),
-  KEY `fk_Reporte_Periodo1_idx` (`Periodo_idPeriodo`),
-  KEY `fk_Reporte_Asignatura1_idx` (`Asignatura_idAsignatura`),
-  CONSTRAINT `fk_Reporte_Asignatura1` FOREIGN KEY (`Asignatura_idAsignatura`) REFERENCES `asignatura` (`idAsignatura`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_Reporte_Periodo1` FOREIGN KEY (`Periodo_idPeriodo`) REFERENCES `periodo` (`idPeriodo`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_Reporte_Usuario1` FOREIGN KEY (`Usuario_idUsuario`) REFERENCES `usuario` (`idUsuario`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- ----------------------------
--- Records of reporte
--- ----------------------------
-
--- ----------------------------
--- Table structure for sesiones
--- ----------------------------
 DROP TABLE IF EXISTS `sesiones`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `sesiones` (
   `idSession` varchar(255) NOT NULL,
   `idUsuario` int(10) NOT NULL,
@@ -226,30 +129,80 @@ CREATE TABLE `sesiones` (
   `fecha` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`idSession`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- ----------------------------
--- Records of sesiones
--- ----------------------------
+--
+-- Dumping data for table `sesiones`
+--
 
--- ----------------------------
--- Table structure for usuario
--- ----------------------------
+LOCK TABLES `sesiones` WRITE;
+/*!40000 ALTER TABLE `sesiones` DISABLE KEYS */;
+/*!40000 ALTER TABLE `sesiones` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `usuario`
+--
+
 DROP TABLE IF EXISTS `usuario`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `usuario` (
-  `idUsuario` varchar(10) NOT NULL,
-  `nombres` varchar(45) NOT NULL,
-  `apellidos` varchar(45) NOT NULL,
-  `telefono` varchar(15) NOT NULL,
-  `rol` varchar(1) NOT NULL,
+  `idUsuario` int(12) NOT NULL AUTO_INCREMENT,
+  `Pnombre` varchar(45) NOT NULL,
+  `Snombre` varchar(45) NOT NULL,
+  `Papellido` varchar(45) NOT NULL,
+  `Sapellido` varchar(45) NOT NULL,
   `correoElectronico` varchar(45) NOT NULL,
   `claveDeAcceso` varchar(255) NOT NULL,
-  `estado` varchar(1) NOT NULL,
+  `estado` int(1) NOT NULL DEFAULT '1',
   `cambioClaveDeAcceso` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`idUsuario`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- ----------------------------
--- Records of usuario
--- ----------------------------
-INSERT INTO `usuario` VALUES ('1', 'carlos', 'castilla', '3043651232', '5', 'carloscastilla31@gmail.com', 'D1979057FD7E4CC00201140D80296F2CDE298015F1A181161CF952F46B79725E', '1', 'D1979057FD7E4CC00201140D80296F2CDE298015F1A181161CF952F46B79725E');
-SET FOREIGN_KEY_CHECKS=1;
+--
+-- Dumping data for table `usuario`
+--
+
+LOCK TABLES `usuario` WRITE;
+/*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
+INSERT INTO `usuario` VALUES (1,'carlos123','dasd','sada','asdas','carloscastilla31@gmail.com','BDE7DB439A3BB59CA4ED8BBDDA763ABF77D3671BA966C78DF31854E509859E48',1,'0'),(2,'','','','','admin@admin.com','8CF63C0A89B9D721F18FCBC09DA0C824AD561C77C7E5D9148AFCA927AB50457D',1,NULL);
+/*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `usuarioacceso`
+--
+
+DROP TABLE IF EXISTS `usuarioacceso`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `usuarioacceso` (
+  `idUsuario` int(11) NOT NULL,
+  `rol` int(11) NOT NULL DEFAULT '1',
+  KEY `idUsuario` (`idUsuario`),
+  CONSTRAINT `usuarioacceso_ibfk_1` FOREIGN KEY (`idUsuario`) REFERENCES `usuario` (`idUsuario`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `usuarioacceso`
+--
+
+LOCK TABLES `usuarioacceso` WRITE;
+/*!40000 ALTER TABLE `usuarioacceso` DISABLE KEYS */;
+INSERT INTO `usuarioacceso` VALUES (1,1),(2,2);
+/*!40000 ALTER TABLE `usuarioacceso` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2017-11-05 23:11:08
