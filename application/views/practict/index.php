@@ -12,7 +12,7 @@ and open the template in the editor.
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="" />
     <meta name="author" content="https://simpleteamgroup.com/" />
-    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="https://code.jquery.com/jquery-latest.js"></script>
 
 
     <link rel="apple-touch-icon" sizes="180x180" href="js-css-font/fav/apple-touch-icon.png"/>
