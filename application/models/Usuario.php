@@ -36,7 +36,7 @@ class Usuario extends  CI_Model{
                 "claveDeAcceso" => $row->claveDeAcceso,
                 "estado" => $row->estado
             );
-            $this->comprobarInicioSesion($row->idUsuario,$row->Pnombre." ".$row->Snombre, $row->Papellido." ".$row->Sapellido,$row->correoElectronico);
+            $this->comprobarInicioSesion($row->idUsuario,$row->Pnombre." ".$row->Snombre, $row->Papellido." ".$row->Sapellido, $row->correoElectronico);
             $this->session->set_userdata($newdata);
             $this->db->query('INSERT INTO sesiones(idUsuario,idSession) VALUES("'.$row->idUsuario.'","'.session_id().'");');
             return true;
@@ -50,7 +50,7 @@ class Usuario extends  CI_Model{
     function RecuperarContraseña($email,$nuevaClave)
     {
        $this->db->query('UPDATE usuario SET cambioClaveDeAcceso = "'.$nuevaClave.'" WHERE correoElectronico =  "'.$email.'"; ');
-       $query = $this->db->query('SELECT nombres,apellidos,correoElectronico,claveDeAcceso,cambioClaveDeAcceso FROM usuario WHERE correoElectronico = "'.$email.'" ');
+       $query = $this->db->query('SELECT pnombres,papellidos,correoElectronico,claveDeAcceso,cambioClaveDeAcceso FROM usuario WHERE correoElectronico = "'.$email.'" ');
        if($query->num_rows() == 1){
            return $query->row();
        }
