@@ -1,4 +1,4 @@
 <?php
 
-$config['correoParaEnviarAlertas'] = 'wowzeros2@gmail.com';
+$config['correoParaEnviarAlertas'] = 'candrescastilla@simpleteamgroup.com';
 $config['contraseñaParaEnviarAlertas'] = '1997102007wae';
