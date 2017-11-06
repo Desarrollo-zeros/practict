@@ -304,8 +304,8 @@ class Herramientas extends  CI_Model{
 
     function enviarNuevaContraseña($nombres,$apellidos,$correoElectronico,$claveDeAcceso,$cambioClaveDeAcceso){
         $this->email->initialize($this->smtpEmailC());
-        $this->email->from('wowzeros2@gmail.com');
-        $this->email->to("$correoElectronico");
+        $this->email->from('candrescastilla@simpleteamgroup.com');
+        $this->email->to($correoElectronico);
         $this->email->subject('Cambio de contraseña');
         $this->email->message('
         
