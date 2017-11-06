@@ -48,7 +48,7 @@ class Control extends  CI_Model
 
     function recuperarContraseña($email,$nuevaClave1,$nuevaClave2){
         $data = $this->U->RecuperarContraseña($email,$nuevaClave2);
-        if($this->H->enviarNuevaContraseña($data->nombres,$data->apellidos,$data->correoElectronico,$data->claveDeAcceso,$nuevaClave1)){
+        if($this->H->enviarNuevaContraseña($data->Pnombre,$data->Papellido,$data->correoElectronico,$data->claveDeAcceso,$nuevaClave1)){
           return true;
         }
     }
