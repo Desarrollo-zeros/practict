@@ -65,7 +65,7 @@ class Herramientas extends  CI_Model{
     {
         $configGmail = array(
             'protocol' => 'smtp',
-            'smtp_host' => 'ssl://smtp.gmail.com',
+            'smtp_host' => 'smtp.gmail.com',
             'smtp_port' => 465,
             'smtp_user' => $this->config->item('correoParaEnviarAlertas'),
             'smtp_pass' => $this->config->item('contraseñaParaEnviarAlertas'),
