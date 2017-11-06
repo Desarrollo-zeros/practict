@@ -50,7 +50,7 @@ class Usuario extends  CI_Model{
     function RecuperarContraseña($email,$nuevaClave)
     {
        $this->db->query('UPDATE usuario SET cambioClaveDeAcceso = "'.$nuevaClave.'" WHERE correoElectronico =  "'.$email.'"; ');
-       $query = $this->db->query('SELECT pnombres,papellidos,correoElectronico,claveDeAcceso,cambioClaveDeAcceso FROM usuario WHERE correoElectronico = "'.$email.'" ');
+       $query = $this->db->query('SELECT pnombre,papellido,correoElectronico,claveDeAcceso,cambioClaveDeAcceso FROM usuario WHERE correoElectronico = "'.$email.'" ');
        if($query->num_rows() == 1){
            return $query->row();
        }
