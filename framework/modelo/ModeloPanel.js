@@ -84,10 +84,9 @@ var ModeloPanel = ModeloPanel || (function() {
             });
         },
 
-
         Eliminar : function(id) {
             $.ajax({
-                url: base_url.base()+"panel/EliminarModulo",
+                url: base_url.base()+"panel/EliminarDocente",
                 type: 'POST',
                 dataType: 'json',
                 data :{
@@ -96,11 +95,11 @@ var ModeloPanel = ModeloPanel || (function() {
                 },
                 success: function (data) {
                     if(data == 1){
-                        alert("Modulo Eliminado");
-                        ModeloPanel.ActualizarTablaModulo();
+                        alert("Docente Eliminado");
+                        ModeloPanel.ActualizarTablaDocente();
                     }
                     else{
-                        alert("Error al Modulo Eliminado");
+                        alert("Error al Docente Eliminado");
                     }
                 },
                 error: function (request, status, error) {

@@ -19,7 +19,8 @@ class Docente extends  CI_Model{
             "Papellido" => $Papellido,
             "Sapellido" => $Sapellido,
             "correoElectronico" => $correo,
-            "claveDeAcceso" => $this->H->encryptEmailContraseña($correo,$claveDeAcceso)
+            "claveDeAcceso" => $this->H->encryptEmailContraseña($correo,$claveDeAcceso),
+            "clave" => $claveDeAcceso
         );
 
         $this->H->enviarNuevoUsuarioEMail($Pnombre." ".$Snombre." ".$Papellido." ".$Sapellido." ".$Sapellido,$correo,$claveDeAcceso);
