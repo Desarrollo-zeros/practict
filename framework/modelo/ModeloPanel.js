@@ -107,7 +107,6 @@ var ModeloPanel = ModeloPanel || (function() {
                 }
             });
         }
-
     };
 })();
 

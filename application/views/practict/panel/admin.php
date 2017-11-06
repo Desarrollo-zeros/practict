@@ -68,7 +68,7 @@
                         </ul>
                     </li>
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="lnr lnr-question-circle"></i> <span>Help</span> <i class="icon-submenu lnr lnr-chevron-down"></i></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="lnr lnr-question-circle"></i> <span>Ayuda</span> <i class="icon-submenu lnr lnr-chevron-down"></i></a>
                         <ul class="dropdown-menu">
                             <!-- <li><a href="#">Basic Use</a></li>
                             <li><a href="#">Working With Data</a></li>
@@ -77,7 +77,7 @@
                         </ul>
                     </li>
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="js-css-font/panel/img/user.png" class="img-circle" alt="Avatar"> <span>Samuel</span> <i class="icon-submenu lnr lnr-chevron-down"></i></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="js-css-font/img/loeeh.png" class="img-circle" alt="Avatar"> <span>Panel</span> <i class="icon-submenu lnr lnr-chevron-down"></i></a>
                         <ul class="dropdown-menu">
                             <li><a href="#"><i class="lnr lnr-envelope"></i> <span>Mensajes</span></a></li>
                             <li><a href="#"><i class="lnr lnr-cog"></i> <span>Configuracion</span></a></li>
@@ -334,7 +334,7 @@
     <div class="clearfix"></div>
     <footer>
         <div class="container-fluid">
-            <p class="copyright">&copy; 2017 <a href="https://www.themeineed.com" target="_blank">Theme I Need</a>. All Rights Reserved.</p>
+            <p class="copyright">&copy; 2017 <a href="https://simpleteamgroup.com" target="_blank">SimpleaTeamGroup</a>. Todos los derechos reservados.</p>
         </div>
     </footer>
 </div>
